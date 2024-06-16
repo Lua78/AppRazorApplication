@@ -1,0 +1,54 @@
+﻿@page "{id:int}"
+@model AppRazorApplication.Pages.Contacts.ContactDetailsModel
+@{
+    ViewData["Title"] = "Contact Details";
+}
+
+<h1>Contact Details</h1>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <td>@Model.Contact.name</td>
+    </tr>
+    <tr>
+        <th>Lastname</th>
+        <td>@Model.Contact.lastname</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>@Model.Contact.email</td>
+    </tr>
+    <tr>
+        <th>Phone</th>
+        <td>@Model.Contact.phone</td>
+    </tr>
+    <tr>
+        <th>Address</th>
+        <td>@Model.Contact.address</td>
+    </tr>
+    <tr>
+        <th>City</th>
+        <td>@Model.Contact.city</td>
+    </tr>
+    <tr>
+        <th>Photo</th>
+        <td>
+            @if (!string.IsNullOrEmpty(Model.Contact.photo))
+            {
+                <img src="@Model.Contact.photo" alt="Photo" style="max-width: 100px;" />
+            }
+            else
+            {
+                <p>No photo available</p>
+            }
+        </td>
+    </tr>
+    <tr>
+        <th>Creation Date</th>
+        <td>@Model.Contact.creation_date.ToString("g")</td>
+    </tr>
+</table>
+
+<a asp-page="/Contacts/Index">Back to List</a>
+

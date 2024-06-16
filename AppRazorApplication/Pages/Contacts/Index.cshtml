@@ -1,0 +1,53 @@
+﻿@page
+@model AppRazorApplication.Pages.Contacts.IndexModel
+@{
+    ViewData["Tittle"] = "Contact List";
+}
+
+
+
+<div class="card">
+    <div class="card-header">
+        <div class="col-6">
+            <h2>Contacts list</h2>
+        </div>
+        <div class="col-6">
+            <a asp-page="createContact" class="btn btn-primary">Add new contact</a>
+        </div>
+    </div>
+    <div class="card-body">
+        <form method="post">
+        @if(Model.contacts.Count()> 0){
+            <table class="table  table-striped border">
+                <tr class="table-secondarydary">
+                    <th>@Html.DisplayNameFor(m => m.contacts.First().name)</th>
+                    <th>@Html.DisplayNameFor(m => m.contacts.First().lastname)</th>
+                    <th>@Html.DisplayNameFor(m => m.contacts.First().phone)</th>
+                    <th>Actions</th>
+                </tr>
+                @foreach (var c in Model.contacts)
+                {
+                    <tr class="table-secondarydary">
+                        <td>@Html.DisplayFor(m => c.name)</td>
+                        <td>@Html.DisplayFor(m => c.lastname)</td>
+                        <td>@Html.DisplayFor(m => c.phone)</td>
+                        <td>
+                            <a asp-route-id ="@c.Id" asp-page="view" class="btn btn-primary btn-sm" >View</a>
+                            <a asp-route-id="@c.Id" asp-page="view" class="btn btn-success btn-sm">Edit</a>
+                            <button asp-page-handler="Delete" asp-route-id="@c.Id" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete this?')">Delete</button>
+
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        }
+        else
+        {
+            <h1>There are not contacts yet.</h1>
+        }
+        </form>
+    </div>
+
+
+</div>
