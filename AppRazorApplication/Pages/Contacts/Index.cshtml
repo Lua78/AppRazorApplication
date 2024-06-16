@@ -32,8 +32,8 @@
                         <td>@Html.DisplayFor(m => c.lastname)</td>
                         <td>@Html.DisplayFor(m => c.phone)</td>
                         <td>
-                            <a asp-route-id ="@c.Id" asp-page="view" class="btn btn-primary btn-sm" >View</a>
-                            <a asp-route-id="@c.Id" asp-page="view" class="btn btn-success btn-sm">Edit</a>
+                            <a asp-route-id ="@c.Id" asp-page="viewContact" class="btn btn-primary btn-sm" >View</a>
+                            <a asp-route-id="@c.Id" asp-page="EditContact" class="btn btn-success btn-sm">Edit</a>
                             <button asp-page-handler="Delete" asp-route-id="@c.Id" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete this?')">Delete</button>
 
                         </td>
